@@ -1737,14 +1737,14 @@ class Telepathy_cli:
                     )
                     await group_channel.analyze_group_channel()
 
-    class PlaceholderClass:
-        def __init__(self):
-            self.d500 = 0
-            self.d1000 = 0
-            self.d2000 = 0
-            self.d3000 = 0
-            self.save_file = ""
-            self.total = 0
+class PlaceholderClass:
+    def __init__(self):
+        self.d500 = 0
+        self.d1000 = 0
+        self.d2000 = 0
+        self.d3000 = 0
+        self.save_file = ""
+        self.total = 0
 
 
 async def analyze_location(self, _target):
