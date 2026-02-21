@@ -15,7 +15,6 @@ import configparser
 import asyncio
 
 from src.telepathy.utils import (
-    print_banner,
     color_print_green,
     populate_user,
     process_message,
@@ -39,13 +38,9 @@ from telethon.tl.types import (
     User,
     PeerChat,
     PeerChannel,
-    PeerLocated,
-    ChannelParticipantCreator,
-    ChannelParticipantAdmin,
 )
-from telethon.tl.functions.users import GetFullUserRequest
-from telethon import TelegramClient, functions, types, utils
-from telethon.utils import get_display_name, get_message_id
+from telethon import TelegramClient, functions, types
+from telethon.utils import get_display_name
 from alive_progress import alive_bar
 from colorama import Fore, Style
 from src.telepathy.const import telepathy_file
@@ -180,7 +175,7 @@ class Group_Chat_Analisys:
         try:
             current_entity = await self.client.get_entity(_target)
             target = _target
-        except Exception as exx:
+        except Exception:
             try:
                 current_entity = await self.client.get_entity(int(_target))
                 target = int(_target)
@@ -191,13 +186,13 @@ class Group_Chat_Analisys:
             try:
                 current_entity = await self.client.get_entity(PeerChannel(_target))
                 target = _target
-            except Exception as exx:
+            except Exception:
                 pass
         if not current_entity:
             try:
                 current_entity = await self.client.get_entity(PeerChat(_target))
                 target = _target
-            except Exception as exx:
+            except Exception:
                 pass
         if type(target) is int and current_entity.username:
             target = current_entity.username
@@ -365,7 +360,7 @@ class Group_Chat_Analisys:
     async def retrieve_chat_group_entity(self, _handle):
         try:
             _entitydetails = await self.retrieve_entity_info(_handle)
-        except Exception as exx:
+        except Exception:
             pass
 
         self._entity = _entitydetails["entity"]
@@ -2017,7 +2012,7 @@ async def analyze_location(self, _target):
             setattr(my_user, "target", _target)
             print_shell("user", my_user)
 
-        except ValueError as exx:
+        except ValueError:
             pass
 
         if my_user is None:

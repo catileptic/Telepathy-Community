@@ -29,15 +29,10 @@ from telethon.tl.types import (
     InputPeerEmpty,
     PeerUser,
     User,
-    PeerChat,
-    PeerChannel,
-    PeerLocated,
-    ChannelParticipantCreator,
-    ChannelParticipantAdmin,
 )
 from telethon.tl.functions.messages import GetDialogsRequest
-from telethon import TelegramClient, functions, types, utils
-from telethon.utils import get_display_name, get_message_id
+from telethon import TelegramClient, functions, types
+from telethon.utils import get_display_name
 from alive_progress import alive_bar
 from colorama import Fore, Style
 
