@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """Telepathy cli interface:
-    An OSINT toolkit for investigating Telegram chats.
+An OSINT toolkit for investigating Telegram chats.
 """
 
 import pandas as pd
@@ -801,7 +801,9 @@ class Group_Chat_Analisys:
                         with open(
                             self.edgelist_file, "w+", encoding="utf-8"
                         ) as save_forwards:
-                            forwards_df.to_csv(save_forwards, sep=";", index=False) # missing index=False (Gephi issue)
+                            forwards_df.to_csv(
+                                save_forwards, sep=";", index=False
+                            )  # missing index=False (Gephi issue)
 
                         if self.json_check:
                             forwards_df.to_json(
@@ -1741,13 +1743,14 @@ class Telepathy_cli:
                     await group_channel.analyze_group_channel()
 
     class PlaceholderClass:
-    def __init__(self):
-        self.d500 = 0
-        self.d1000 = 0
-        self.d2000 = 0
-        self.d3000 = 0
-        self.save_file = ""
-        self.total = 0
+        def __init__(self):
+            self.d500 = 0
+            self.d1000 = 0
+            self.d2000 = 0
+            self.d3000 = 0
+            self.save_file = ""
+            self.total = 0
+
 
 async def analyze_location(self, _target):
     print(
@@ -1759,14 +1762,13 @@ async def analyze_location(self, _target):
         + "\n"
     )
 
-    latitude, longitude = map(float, _target.split(','))
+    latitude, longitude = map(float, _target.split(","))
 
     locations_file = self.create_path(
         os.path.join(self.telepathy_file, self.config_p["telepathy"]["location"])
     )
     save_file = (
-        locations_file
-        + f"{latitude}_{longitude}_locations_{self.filetime_clean}.csv"
+        locations_file + f"{latitude}_{longitude}_locations_{self.filetime_clean}.csv"
     )
 
     locations_list = []
@@ -1824,7 +1826,7 @@ async def analyze_location(self, _target):
 
     with open(save_file, "w+", encoding="utf-8") as f:
         l_save_df.to_csv(f, sep=";", index=False)
-    
+
     total = len(locations_list)
     distance_obj.save_file = save_file
     distance_obj.total = total
@@ -1834,7 +1836,9 @@ async def analyze_location(self, _target):
     current_time = datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S+00:00")
 
     for user in result.users:
-        name = str(user.first_name) + (" " + str(user.last_name) if user.last_name else "")
+        name = str(user.first_name) + (
+            " " + str(user.last_name) if user.last_name else ""
+        )
         user_status = "Not found"
         last_seen = ""
 
@@ -1889,9 +1893,9 @@ async def analyze_location(self, _target):
             restrictions = channel.restriction_reason
             ios = android = None
             for restriction in restrictions:
-                if restriction.platform == 'android':
+                if restriction.platform == "android":
                     android = f"restricted on Android due to {restriction.reason}"
-                if restriction.platform == 'ios':
+                if restriction.platform == "ios":
                     ios = f"restricted on iOS due to {restriction.reason}"
 
             if ios and android:
@@ -1914,7 +1918,7 @@ async def analyze_location(self, _target):
             "latitude": latitude,
             "longitude": longitude,
             "url": url,
-            "retrieval_time": current_time
+            "retrieval_time": current_time,
         }
 
         for key, value in channel_record.items():

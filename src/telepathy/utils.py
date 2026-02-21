@@ -300,14 +300,14 @@ def print_shell(type, obj):
     if type == "forwarder_stat":
         color_print_green(" [+] Forward scrape complete", "")
         color_print_green("  ┬  Statistics", "")
-        #color_print_green(
+        # color_print_green(
         #    "  ├  Forwarded messages found: ", str(obj.forward_count)
-        #)
-        #color_print_green(
+        # )
+        # color_print_green(
         #    "  ├  Forwards from active public chats: ",
         #    str(obj.forwards_found),
-        #)
-        #if hasattr(object, "private_count"):
+        # )
+        # if hasattr(object, "private_count"):
         #    color_print_green(
         #        "  ├  Forwards from private (or now private) chats: ",
         #        str(obj.private_count),

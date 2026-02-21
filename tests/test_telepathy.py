@@ -21,6 +21,7 @@ def detail_to_group_basic():
         "triangulate_membership": False,
     }
 
+
 def test_channel_group_basic(detail_to_group_basic):
     tele_cli = Telepathy_cli(
         detail_to_group_basic["target"],
