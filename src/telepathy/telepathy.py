@@ -1482,7 +1482,7 @@ class Group_Chat_Analisys:
                         print_shell("reply_stat", repliers)
 
                 if self.forwards_check is True:
-                    if forward_count >= 15:
+                    if forward_count >= 1:
                         forwards_found = c_forwards.Source.count()
                         value_count = c_forwards["Source"].value_counts()
                         c_f_stats = value_count.rename_axis(
